@@ -1,5 +1,8 @@
 # todo
-Frontend for simple todo app using supabase backend for authentication and database
+Frontend for simple todo app using supabase backend for authentication and database.
+
+Demo app: https://todo91.netlify.app
+
 
 
 

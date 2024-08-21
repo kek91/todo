@@ -94,8 +94,8 @@ async function fetchEntriesInTodolist(todoListId) {
 
 async function openTodoList(todoList) {
     console.log('openTodoList', todoList.id)
-    this.showTodoList = true;
-    currentTodoList = todoList;
+    showTodoList.value = true;
+    currentTodoList.value = todoList;
     await fetchEntriesInTodolist(todoList.id);
 }
 
