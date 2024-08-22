@@ -1,5 +1,14 @@
 <template>
 
+    <Login
+            v-if="!user"
+            @login="loginUser"
+            msg="Hello, world!"
+    />
+
+<!--    <p>User:</p>-->
+<!--    <div v-html="user.value"></div>-->
+
 
     <div v-if="showTodoList">
         <h1>{{ currentTodoList.name }}</h1>
@@ -39,7 +48,7 @@
                 <th>Config</th>
                 <th>Owner</th>
             </tr>
-            <tr v-for="todoList in myTodoLists" :key="todoList.id" @click="openTodoList(todoList)">
+            <tr v-for="todoList in myTodoLists" :key="todoList.id" @click="openTodoList(todoList)" :style="`background-color:${rowColor(todoList.config)};`">
                 <td>{{ todoList.id }}</td>
                 <td>{{ todoList.created_at }}</td>
                 <td>{{ todoList.name }}</td>
@@ -63,7 +72,7 @@ table td {
     cursor:pointer;
 }
 table tr:hover {
-    background:rgba(0,0,0,0.02);
+    background-color:rgba(0,0,0,0.02) !important;
 }
 button {
     padding:10px;
@@ -75,12 +84,13 @@ button {
 <script setup>
 import { ref, onMounted } from 'vue'
 import { supabase } from './lib/supabaseClient'
+import Login from "@/components/Login.vue";
 
-const groceries = ref([])
 const myTodoLists = ref([]);
 let showTodoList = ref(false)
 let currentTodoList = ref();
 let currentTodoEntries = ref([]);
+const user = ref();
 
 async function fetchTodoLists() {
     const { data } = await supabase.from('todolists').select();
@@ -99,10 +109,37 @@ async function openTodoList(todoList) {
     await fetchEntriesInTodolist(todoList.id);
 }
 
+function rowColor(config) {
+    switch (config.color) {
+        case 'red':
+            return '#FFCCCC';
+        case 'green':
+            return '#CCFFCC';
+        case 'blue':
+            return '#CCFFFF';
+        case 'yellow':
+            return '#FFFFCC';
+        default:
+            return '#CCCCCC';
+    }
+}
 
 
 onMounted(() => {
     fetchTodoLists();
+
+    user.value = null;
+    supabase.auth.getUser().then((auth) => {
+
+        if (auth.data.user === null || auth.error.status === 400) {
+            console.log("Not logged in!");
+            user.value = null;
+        } else {
+            console.log("Logged in as user ", auth.data.user);
+            user.value = auth.data.user;
+        }
+    });
+
 });
 
 </script>
