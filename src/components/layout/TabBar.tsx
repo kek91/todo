@@ -48,7 +48,7 @@ export function TabBar() {
   const { activeTab, setActiveTab } = useUIStore()
 
   return (
-    <nav className="flex-shrink-0 border-t border-[#2E3245] bg-[#1A1D27] safe-area-inset-bottom">
+    <nav className="flex-shrink-0 border-t border-[var(--border)] bg-[var(--surface)] safe-area-inset-bottom">
       <div className="flex">
         {tabs.map((tab) => {
           const active = activeTab === tab.id

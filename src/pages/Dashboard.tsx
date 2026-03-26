@@ -57,11 +57,11 @@ export function Dashboard({ householdId }: DashboardProps) {
       <Card className="p-4 space-y-3">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-xs text-[#7B80A0]">{greeting}</p>
-            <h1 className="text-xl font-bold text-[#E8EAF0]">{profile?.name?.split(' ')[0] ?? 'Hey'} 👋</h1>
+            <p className="text-xs text-[var(--muted)]">{greeting}</p>
+            <h1 className="text-xl font-bold text-[var(--text)]">{profile?.name?.split(' ')[0] ?? 'Hey'} 👋</h1>
           </div>
           <div className="text-right">
-            <p className="text-xs text-[#7B80A0]">Total XP</p>
+            <p className="text-xs text-[var(--muted)]">Total XP</p>
             <p className="text-lg font-bold text-[#7C6AF5]">{profile?.xp ?? 0}</p>
           </div>
         </div>
@@ -73,7 +73,7 @@ export function Dashboard({ householdId }: DashboardProps) {
       {/* Today's tasks */}
       <div>
         <div className="flex items-center justify-between mb-2.5">
-          <h2 className="text-sm font-semibold text-[#E8EAF0]">
+          <h2 className="text-sm font-semibold text-[var(--text)]">
             Due today
             {dueTasks.length > 0 && (
               <span className="ml-2 bg-[#F5A623]/20 text-[#F5A623] text-xs px-1.5 py-0.5 rounded-full">
@@ -94,7 +94,7 @@ export function Dashboard({ householdId }: DashboardProps) {
         {dueTasks.length === 0 ? (
           <Card className="p-6 text-center">
             <p className="text-2xl mb-1">✅</p>
-            <p className="text-sm text-[#7B80A0]">Nothing due today!</p>
+            <p className="text-sm text-[var(--muted)]">Nothing due today!</p>
           </Card>
         ) : (
           <Card className="divide-y divide-[#2E3245]">
@@ -114,7 +114,7 @@ export function Dashboard({ householdId }: DashboardProps) {
       {shoppingList && uncheckedShopping.length > 0 && (
         <div>
           <div className="flex items-center justify-between mb-2.5">
-            <h2 className="text-sm font-semibold text-[#E8EAF0]">🛒 Shopping</h2>
+            <h2 className="text-sm font-semibold text-[var(--text)]">🛒 Shopping</h2>
             <button
               onClick={() => { setActiveListId(shoppingList.id); setActiveTab('shopping') }}
               className="text-xs text-[#7C6AF5]"
@@ -125,12 +125,12 @@ export function Dashboard({ householdId }: DashboardProps) {
           <Card className="p-4">
             <div className="flex flex-wrap gap-2">
               {uncheckedShopping.slice(0, 8).map((item) => (
-                <span key={item.id} className="bg-[#252837] text-[#E8EAF0] text-xs px-2.5 py-1 rounded-lg">
+                <span key={item.id} className="bg-[var(--surface-2)] text-[var(--text)] text-xs px-2.5 py-1 rounded-lg">
                   {item.title}
                 </span>
               ))}
               {uncheckedShopping.length > 8 && (
-                <span className="bg-[#252837] text-[#7B80A0] text-xs px-2.5 py-1 rounded-lg">
+                <span className="bg-[var(--surface-2)] text-[var(--muted)] text-xs px-2.5 py-1 rounded-lg">
                   +{uncheckedShopping.length - 8} more
                 </span>
               )}
@@ -149,8 +149,8 @@ export function Dashboard({ householdId }: DashboardProps) {
           ].map(({ label, value, icon }) => (
             <Card key={label} className="p-3 text-center">
               <div className="text-xl mb-0.5">{icon}</div>
-              <div className="text-lg font-bold text-[#E8EAF0]">{value}</div>
-              <div className="text-xs text-[#7B80A0]">{label}</div>
+              <div className="text-lg font-bold text-[var(--text)]">{value}</div>
+              <div className="text-xs text-[var(--muted)]">{label}</div>
             </Card>
           ))}
         </div>

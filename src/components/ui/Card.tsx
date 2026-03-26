@@ -9,8 +9,8 @@ export function Card({ className, elevated, children, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        'rounded-2xl border border-[#2E3245]',
-        elevated ? 'bg-[#252837]' : 'bg-[#1A1D27]',
+        'rounded-2xl border border-[var(--border)]',
+        elevated ? 'bg-[var(--surface-2)]' : 'bg-[var(--surface)]',
         className,
       )}
       {...props}

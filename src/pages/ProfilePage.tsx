@@ -48,8 +48,8 @@ export function ProfilePage({ householdId }: ProfilePageProps) {
               {getInitials(profile.name)}
             </div>
             <div className="flex-1">
-              <h2 className="font-bold text-[#E8EAF0] text-lg">{profile.name}</h2>
-              <p className="text-[#7B80A0] text-sm">{profile.email}</p>
+              <h2 className="font-bold text-[var(--text)] text-lg">{profile.name}</h2>
+              <p className="text-[var(--muted)] text-sm">{profile.email}</p>
               <Badge variant="accent" className="mt-1">{getLevelTitle(profile.level)}</Badge>
             </div>
           </div>
@@ -60,23 +60,23 @@ export function ProfilePage({ householdId }: ProfilePageProps) {
       {/* Level roadmap */}
       {profile && (
         <Card className="p-4">
-          <h3 className="text-sm font-semibold text-[#E8EAF0] mb-3">Level Roadmap</h3>
+          <h3 className="text-sm font-semibold text-[var(--text)] mb-3">Level Roadmap</h3>
           <div className="space-y-2">
             {LEVEL_MILESTONES.map((lvl) => {
               const reached = profile.level >= lvl
               return (
                 <div key={lvl} className="flex items-center gap-3">
                   <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-                    reached ? 'bg-[#7C6AF5] text-white' : 'bg-[#252837] text-[#7B80A0]'
+                    reached ? 'bg-[#7C6AF5] text-white' : 'bg-[var(--surface-2)] text-[var(--muted)]'
                   }`}>
                     {lvl}
                   </div>
                   <div className="flex-1">
-                    <span className={`text-sm ${reached ? 'text-[#E8EAF0]' : 'text-[#7B80A0]'}`}>
+                    <span className={`text-sm ${reached ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
                       {getLevelTitle(lvl)}
                     </span>
                   </div>
-                  <span className="text-xs text-[#7B80A0]">{xpForLevel(lvl)} XP</span>
+                  <span className="text-xs text-[var(--muted)]">{xpForLevel(lvl)} XP</span>
                   {reached && <span className="text-xs text-[#5EE8A8]">✓</span>}
                 </div>
               )
@@ -87,19 +87,19 @@ export function ProfilePage({ householdId }: ProfilePageProps) {
 
       {/* Household members */}
       <Card className="p-4">
-        <h3 className="text-sm font-semibold text-[#E8EAF0] mb-3">Household Members</h3>
+        <h3 className="text-sm font-semibold text-[var(--text)] mb-3">Household Members</h3>
         <div className="space-y-2">
           {members.map((m) => {
             const user = m.expand?.user
             if (!user) return null
             return (
               <div key={m.id} className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#252837] flex items-center justify-center text-sm font-bold text-[#7C6AF5]">
+                <div className="w-9 h-9 rounded-xl bg-[var(--surface-2)] flex items-center justify-center text-sm font-bold text-[#7C6AF5]">
                   {getInitials(user.name)}
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-[#E8EAF0]">{user.name}</p>
-                  <p className="text-xs text-[#7B80A0]">Level {user.level} · {user.xp} XP</p>
+                  <p className="text-sm font-medium text-[var(--text)]">{user.name}</p>
+                  <p className="text-xs text-[var(--muted)]">Level {user.level} · {user.xp} XP</p>
                 </div>
                 <Badge variant={m.role === 'admin' ? 'accent' : 'default'}>{m.role}</Badge>
               </div>
@@ -110,16 +110,16 @@ export function ProfilePage({ householdId }: ProfilePageProps) {
 
       {/* Settings */}
       <Card className="p-4 space-y-3">
-        <h3 className="text-sm font-semibold text-[#E8EAF0]">Settings</h3>
+        <h3 className="text-sm font-semibold text-[var(--text)]">Settings</h3>
         <div className="flex items-center justify-between">
-          <span className="text-sm text-[#7B80A0]">Theme</span>
+          <span className="text-sm text-[var(--muted)]">Theme</span>
           <div className="flex gap-2">
             {(['dark', 'light'] as const).map((t) => (
               <button
                 key={t}
                 onClick={() => setTheme(t)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize transition-all ${
-                  theme === t ? 'bg-[#7C6AF5] text-white' : 'bg-[#252837] text-[#7B80A0]'
+                  theme === t ? 'bg-[#7C6AF5] text-white' : 'bg-[var(--surface-2)] text-[var(--muted)]'
                 }`}
               >
                 {t === 'dark' ? '🌙 Dark' : '☀️ Light'}

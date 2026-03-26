@@ -29,7 +29,7 @@ export function HouseholdSetup({ onSuccess }: HouseholdSetupProps) {
   })
 
   return (
-    <div className="min-h-screen bg-[#0F1117] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-4">
         <div className="text-center">
           <div className="text-4xl mb-3">🏠</div>
@@ -53,7 +53,7 @@ export function HouseholdSetup({ onSuccess }: HouseholdSetupProps) {
           ))}
         </div>
 
-        <div className="bg-[#1A1D27] border border-[#2E3245] rounded-2xl p-5 space-y-4">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 space-y-4">
           {mode === 'create' ? (
             <>
               <Input

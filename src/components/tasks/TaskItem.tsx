@@ -87,7 +87,7 @@ export function TaskItem({ task, listId }: TaskItemProps) {
     <div
       className={cn(
         'group flex items-start gap-3 p-3.5 rounded-xl border border-transparent',
-        'hover:bg-[#252837] transition-all duration-200 slide-up',
+        'hover:bg-[var(--surface-2)] transition-all duration-200 slide-up',
         PRIORITY_COLORS[task.priority],
         PRIORITY_BORDER[task.priority],
         task.completed && 'opacity-50',
@@ -102,7 +102,7 @@ export function TaskItem({ task, listId }: TaskItemProps) {
           'flex items-center justify-center',
           task.completed
             ? 'bg-[#5EE8A8] border-[#5EE8A8] check-pop'
-            : 'border-[#2E3245] hover:border-[#7C6AF5]',
+            : 'border-[var(--border)] hover:border-[#7C6AF5]',
         )}
       >
         {task.completed && (
@@ -117,20 +117,20 @@ export function TaskItem({ task, listId }: TaskItemProps) {
         <p
           className={cn(
             'text-sm font-medium leading-snug',
-            task.completed ? 'line-through text-[#7B80A0]' : 'text-[#E8EAF0]',
+            task.completed ? 'line-through text-[var(--muted)]' : 'text-[var(--text)]',
           )}
         >
           {task.title}
         </p>
         {task.description && !task.completed && (
-          <p className="text-xs text-[#7B80A0] mt-0.5 truncate">{task.description}</p>
+          <p className="text-xs text-[var(--muted)] mt-0.5 truncate">{task.description}</p>
         )}
         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
           {task.due_date && !task.completed && (
             <span
               className={cn(
                 'text-xs font-medium',
-                overdue ? 'text-[#F55A5A]' : dueToday ? 'text-[#F5A623]' : 'text-[#7B80A0]',
+                overdue ? 'text-[#F55A5A]' : dueToday ? 'text-[#F5A623]' : 'text-[var(--muted)]',
               )}
             >
               {overdue ? '⚠ ' : dueToday ? '· ' : ''}{formatDueDate(task.due_date)}
@@ -142,18 +142,18 @@ export function TaskItem({ task, listId }: TaskItemProps) {
             </span>
           )}
           {task.expand?.assigned_to && (
-            <span className="text-xs text-[#7B80A0]">
+            <span className="text-xs text-[var(--muted)]">
               {task.expand.assigned_to.name.split(' ')[0]}
             </span>
           )}
-          <span className="text-xs text-[#7B80A0]/60 ml-auto">+{task.xp_value}xp</span>
+          <span className="text-xs text-[var(--muted)]/60 ml-auto">+{task.xp_value}xp</span>
         </div>
       </div>
 
       {/* Delete */}
       <button
         onClick={() => deleteMutation.mutate()}
-        className="opacity-0 group-hover:opacity-100 flex-shrink-0 p-1 rounded-lg text-[#7B80A0] hover:text-[#F55A5A] hover:bg-[#F55A5A]/10 transition-all"
+        className="opacity-0 group-hover:opacity-100 flex-shrink-0 p-1 rounded-lg text-[var(--muted)] hover:text-[#F55A5A] hover:bg-[#F55A5A]/10 transition-all"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

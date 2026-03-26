@@ -29,7 +29,7 @@ export function Modal({ open, onClose, title, children, className }: ModalProps)
       />
       <div
         className={cn(
-          'relative z-10 w-full max-w-md bg-[#1A1D27] border border-[#2E3245]',
+          'relative z-10 w-full max-w-md bg-[var(--surface)] border border-[var(--border)]',
           'rounded-2xl shadow-2xl p-5 slide-up',
           className,
         )}

@@ -7,7 +7,7 @@ interface BadgeProps {
 }
 
 const variants = {
-  default: 'bg-[#2E3245] text-[#7B80A0]',
+  default: 'bg-[#2E3245] text-[var(--muted)]',
   success: 'bg-[#5EE8A8]/15 text-[#5EE8A8]',
   warning: 'bg-[#F5A623]/15 text-[#F5A623]',
   danger: 'bg-[#F55A5A]/15 text-[#F55A5A]',

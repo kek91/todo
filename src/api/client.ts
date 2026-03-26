@@ -1,6 +1,7 @@
 import PocketBase from 'pocketbase'
 
 const PB_URL = import.meta.env.VITE_PB_URL ?? 'http://localhost:8090'
+console.log('[PB] URL:', PB_URL, '| env:', import.meta.env.VITE_PB_URL)
 
 export const pb = new PocketBase(PB_URL)
 

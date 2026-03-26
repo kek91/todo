@@ -89,7 +89,7 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Quick-add input — always at top */}
-      <div className="p-3 border-b border-[#2E3245] relative">
+      <div className="p-3 border-b border-[var(--border)] relative">
         <form onSubmit={handleSubmit} className="flex gap-2">
           <div className="flex-1 relative">
             <input
@@ -102,17 +102,17 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
               onFocus={() => setShowSuggestions(true)}
               onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
               placeholder="Add item... (tap Enter)"
-              className="w-full bg-[#252837] border border-[#2E3245] rounded-xl px-4 py-3 text-[#E8EAF0] placeholder:text-[#7B80A0] outline-none focus:border-[#7C6AF5] text-base"
+              className="w-full bg-[var(--surface-2)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--text)] placeholder:text-[var(--muted)] outline-none focus:border-[#7C6AF5] text-base"
             />
             {/* Suggestions dropdown */}
             {showSuggestions && suggestions.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-[#252837] border border-[#2E3245] rounded-xl overflow-hidden z-10 shadow-xl">
+              <div className="absolute top-full left-0 right-0 mt-1 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl overflow-hidden z-10 shadow-xl">
                 {suggestions.map((s) => (
                   <button
                     key={s}
                     type="button"
                     onMouseDown={() => addMutation.mutate(s)}
-                    className="w-full text-left px-4 py-2.5 text-sm text-[#E8EAF0] hover:bg-[#2E3245] transition-colors"
+                    className="w-full text-left px-4 py-2.5 text-sm text-[var(--text)] hover:bg-[var(--border)] transition-colors"
                   >
                     {s}
                   </button>
@@ -124,7 +124,7 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="Category"
-            className="w-28 bg-[#252837] border border-[#2E3245] rounded-xl px-3 py-3 text-[#E8EAF0] placeholder:text-[#7B80A0] outline-none focus:border-[#7C6AF5] text-sm"
+            className="w-28 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl px-3 py-3 text-[var(--text)] placeholder:text-[var(--muted)] outline-none focus:border-[#7C6AF5] text-sm"
           />
           <button
             type="submit"
@@ -141,7 +141,7 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
         {categories.map((cat) => (
           <div key={cat}>
             {categories.length > 1 && (
-              <div className="px-4 py-2 text-xs font-semibold text-[#7B80A0] uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">
                 {cat}
               </div>
             )}
@@ -155,7 +155,7 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
         {checked.length > 0 && (
           <div className="mt-2">
             <div className="flex items-center justify-between px-4 py-2">
-              <span className="text-xs font-semibold text-[#7B80A0] uppercase tracking-wider">
+              <span className="text-xs font-semibold text-[var(--muted)] uppercase tracking-wider">
                 In cart ({checked.length})
               </span>
               <button
@@ -174,7 +174,7 @@ export function ShoppingList({ list, householdId }: ShoppingListProps) {
         {items.length === 0 && (
           <div className="flex flex-col items-center justify-center py-16 gap-2">
             <span className="text-3xl">🛒</span>
-            <p className="text-[#7B80A0] text-sm">Add items to your shopping list</p>
+            <p className="text-[var(--muted)] text-sm">Add items to your shopping list</p>
           </div>
         )}
       </div>

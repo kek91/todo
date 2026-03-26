@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useUIStore } from '../../stores/uiStore'
 import { TabBar } from './TabBar'
 import { XPFloats } from '../gamification/XPFloats'
@@ -13,7 +14,12 @@ interface AppShellProps {
 }
 
 export function AppShell({ householdId }: AppShellProps) {
-  const { activeTab } = useUIStore()
+  const { activeTab, theme } = useUIStore()
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    document.documentElement.style.colorScheme = theme
+  }, [theme])
 
   const pages = {
     dashboard: <Dashboard householdId={householdId} />,
@@ -23,7 +29,7 @@ export function AppShell({ householdId }: AppShellProps) {
   }
 
   return (
-    <div className="flex flex-col h-full bg-[#0F1117]">
+    <div className="flex flex-col h-full" style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
       <OfflineBanner />
       <main className="flex-1 overflow-hidden">
         {pages[activeTab]}

@@ -40,7 +40,7 @@ export function ShoppingItem({ item, listId }: ShoppingItemProps) {
     <div
       className={cn(
         'group flex items-center gap-3 px-4 py-3.5 rounded-xl',
-        'hover:bg-[#252837] transition-all duration-150',
+        'hover:bg-[var(--surface-2)] transition-all duration-150',
         item.checked && 'opacity-50',
       )}
     >
@@ -50,7 +50,7 @@ export function ShoppingItem({ item, listId }: ShoppingItemProps) {
           'flex-shrink-0 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all',
           item.checked
             ? 'bg-[#5EE8A8] border-[#5EE8A8] check-pop'
-            : 'border-[#2E3245] hover:border-[#7C6AF5]',
+            : 'border-[var(--border)] hover:border-[#7C6AF5]',
         )}
       >
         {item.checked && (
@@ -62,19 +62,19 @@ export function ShoppingItem({ item, listId }: ShoppingItemProps) {
       <span
         className={cn(
           'flex-1 text-sm',
-          item.checked ? 'line-through text-[#7B80A0]' : 'text-[#E8EAF0]',
+          item.checked ? 'line-through text-[var(--muted)]' : 'text-[var(--text)]',
         )}
       >
         {item.title}
       </span>
       {item.category && (
-        <span className="text-xs text-[#7B80A0] bg-[#252837] px-2 py-0.5 rounded-lg">
+        <span className="text-xs text-[var(--muted)] bg-[var(--surface-2)] px-2 py-0.5 rounded-lg">
           {item.category}
         </span>
       )}
       <button
         onClick={() => deleteMutation.mutate()}
-        className="opacity-0 group-hover:opacity-100 p-1 rounded-lg text-[#7B80A0] hover:text-[#F55A5A] hover:bg-[#F55A5A]/10 transition-all"
+        className="opacity-0 group-hover:opacity-100 p-1 rounded-lg text-[var(--muted)] hover:text-[#F55A5A] hover:bg-[#F55A5A]/10 transition-all"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

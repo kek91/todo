@@ -37,13 +37,13 @@ export function ShoppingPage({ householdId }: ShoppingPageProps) {
     },
   })
 
-  if (isLoading) return <div className="flex items-center justify-center h-full text-[#7B80A0]">Loading...</div>
+  if (isLoading) return <div className="flex items-center justify-center h-full text-[var(--muted)]">Loading...</div>
 
   if (!activeList) {
     return (
       <div className="flex flex-col items-center justify-center h-full gap-4">
         <span className="text-5xl">🛒</span>
-        <p className="text-[#7B80A0]">No shopping list yet</p>
+        <p className="text-[var(--muted)]">No shopping list yet</p>
         <Button loading={createMutation.isPending} onClick={() => createMutation.mutate()}>
           Create Shopping List
         </Button>
@@ -54,9 +54,9 @@ export function ShoppingPage({ householdId }: ShoppingPageProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-[#2E3245]">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)]">
         <span className="text-xl">🛒</span>
-        <h2 className="font-semibold text-[#E8EAF0] flex-1">Shopping</h2>
+        <h2 className="font-semibold text-[var(--text)] flex-1">Shopping</h2>
         {shoppingLists.length > 1 && (
           <div className="flex gap-1">
             {shoppingLists.map((l) => (
@@ -66,7 +66,7 @@ export function ShoppingPage({ householdId }: ShoppingPageProps) {
                 className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${
                   l.id === activeList.id
                     ? 'bg-[#7C6AF5] text-white'
-                    : 'bg-[#252837] text-[#7B80A0]'
+                    : 'bg-[var(--surface-2)] text-[var(--muted)]'
                 }`}
               >
                 {l.name}

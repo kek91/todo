@@ -25,7 +25,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   })
 
   return (
-    <div className="min-h-screen bg-[#0F1117] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -40,7 +40,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
           <p className="text-[#7B80A0] text-sm mt-1">Your shared family dashboard</p>
         </div>
 
-        <div className="bg-[#1A1D27] border border-[#2E3245] rounded-2xl p-6 space-y-4">
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 space-y-4">
           {mode === 'register' && (
             <Input
               label="Name"

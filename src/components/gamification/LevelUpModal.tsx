@@ -15,10 +15,10 @@ export function LevelUpModal() {
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center pointer-events-none">
-      <div className="slide-up text-center space-y-2 p-8 bg-[#1A1D27]/90 backdrop-blur-sm border border-[#7C6AF5]/40 rounded-3xl shadow-2xl">
+      <div className="slide-up text-center space-y-2 p-8 bg-[var(--surface)]/90 backdrop-blur-sm border border-[#7C6AF5]/40 rounded-3xl shadow-2xl">
         <div className="text-5xl mb-2">🎉</div>
         <div className="text-2xl font-bold text-[#7C6AF5]">Level Up!</div>
-        <div className="text-4xl font-black text-[#E8EAF0]">Level {levelUpTo}</div>
+        <div className="text-4xl font-black text-[var(--text)]">Level {levelUpTo}</div>
         <div className="text-[#5EE8A8] font-medium">{getLevelTitle(levelUpTo)}</div>
       </div>
     </div>

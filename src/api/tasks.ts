@@ -9,7 +9,7 @@ import { updateProfile } from './auth'
 export async function getLists(householdId: string): Promise<List[]> {
   return pb.collection('lists').getFullList<List>({
     filter: `household = "${householdId}"`,
-    sort: 'sort_order,created',
+    sort: '+created',
   })
 }
 
@@ -29,7 +29,7 @@ export async function deleteList(id: string): Promise<void> {
 export async function getTasks(listId: string): Promise<Task[]> {
   return pb.collection('tasks').getFullList<Task>({
     filter: `list = "${listId}"`,
-    sort: 'completed,sort_order,due_date,created',
+    sort: 'completed,due_date,created',
     expand: 'assigned_to,completed_by',
   })
 }

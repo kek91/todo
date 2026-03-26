@@ -1,17 +1,31 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg: #0F1117;
-  --color-surface: #1A1D27;
-  --color-surface-2: #252837;
-  --color-border: #2E3245;
-  --color-text: #E8EAF0;
-  --color-muted: #7B80A0;
-  --color-accent: #7C6AF5;
-  --color-accent-dim: #5A4DB8;
-  --color-success: #5EE8A8;
-  --color-warning: #F5A623;
-  --color-danger: #F55A5A;
+/* Dark theme (default) */
+:root, [data-theme="dark"] {
+  --bg:        #0F1117;
+  --surface:   #1A1D27;
+  --surface-2: #252837;
+  --border:    #2E3245;
+  --text:      #E8EAF0;
+  --muted:     #7B80A0;
+  --accent:    #7C6AF5;
+  --success:   #5EE8A8;
+  --warning:   #F5A623;
+  --danger:    #F55A5A;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg:        #F4F5F9;
+  --surface:   #FFFFFF;
+  --surface-2: #EEF0F6;
+  --border:    #DDE0EC;
+  --text:      #1A1D27;
+  --muted:     #6B7280;
+  --accent:    #6B5CE7;
+  --success:   #10B981;
+  --warning:   #F59E0B;
+  --danger:    #EF4444;
 }
 
 * {
@@ -20,8 +34,8 @@
 }
 
 html, body {
-  background-color: #0F1117;
-  color: #E8EAF0;
+  background-color: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, sans-serif;
   height: 100%;
   margin: 0;

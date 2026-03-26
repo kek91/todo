@@ -46,13 +46,13 @@ export function TasksPage({ householdId }: TasksPageProps) {
   })
 
   if (isLoading) {
-    return <div className="flex items-center justify-center h-full text-[#7B80A0]">Loading...</div>
+    return <div className="flex items-center justify-center h-full text-[var(--muted)]">Loading...</div>
   }
 
   return (
     <div className="flex h-full">
       {/* List sidebar */}
-      <div className="w-14 sm:w-48 flex-shrink-0 border-r border-[#2E3245] flex flex-col bg-[#1A1D27]">
+      <div className="w-14 sm:w-48 flex-shrink-0 border-r border-[var(--border)] flex flex-col bg-[var(--surface)]">
         <div className="flex-1 overflow-y-auto scrollbar-hide py-2">
           {todoLists.map((list) => {
             const active = list.id === activeList?.id
@@ -62,7 +62,7 @@ export function TasksPage({ householdId }: TasksPageProps) {
                 onClick={() => setSelectedListId(list.id)}
                 className={cn(
                   'w-full flex items-center gap-3 px-3 py-3 transition-all',
-                  active ? 'bg-[#7C6AF5]/15 text-[#7C6AF5]' : 'text-[#7B80A0] hover:bg-[#252837] hover:text-[#E8EAF0]',
+                  active ? 'bg-[#7C6AF5]/15 text-[#7C6AF5]' : 'text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)]',
                 )}
               >
                 <span className="text-xl flex-shrink-0">{list.icon}</span>
@@ -71,10 +71,10 @@ export function TasksPage({ householdId }: TasksPageProps) {
             )
           })}
         </div>
-        <div className="p-2 border-t border-[#2E3245]">
+        <div className="p-2 border-t border-[var(--border)]">
           <button
             onClick={() => setCreateOpen(true)}
-            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-[#7B80A0] hover:bg-[#252837] hover:text-[#E8EAF0] transition-all text-sm"
+            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-[var(--muted)] hover:bg-[var(--surface-2)] hover:text-[var(--text)] transition-all text-sm"
           >
             <span className="text-lg">+</span>
             <span className="hidden sm:block">New list</span>
@@ -89,7 +89,7 @@ export function TasksPage({ householdId }: TasksPageProps) {
         ) : (
           <div className="flex flex-col items-center justify-center h-full gap-3">
             <span className="text-4xl">📋</span>
-            <p className="text-[#7B80A0]">No lists yet</p>
+            <p className="text-[var(--muted)]">No lists yet</p>
             <Button onClick={() => setCreateOpen(true)}>Create your first list</Button>
           </div>
         )}
@@ -106,7 +106,7 @@ export function TasksPage({ householdId }: TasksPageProps) {
             autoFocus
           />
           <div>
-            <p className="text-sm text-[#7B80A0] font-medium mb-2">Icon</p>
+            <p className="text-sm text-[var(--muted)] font-medium mb-2">Icon</p>
             <div className="flex flex-wrap gap-2">
               {LIST_ICONS.map((icon) => (
                 <button
@@ -114,7 +114,7 @@ export function TasksPage({ householdId }: TasksPageProps) {
                   onClick={() => setNewListIcon(icon)}
                   className={cn(
                     'w-10 h-10 text-xl rounded-xl transition-all',
-                    newListIcon === icon ? 'bg-[#7C6AF5]/30 ring-2 ring-[#7C6AF5]' : 'bg-[#252837] hover:bg-[#2E3245]',
+                    newListIcon === icon ? 'bg-[#7C6AF5]/30 ring-2 ring-[#7C6AF5]' : 'bg-[var(--surface-2)] hover:bg-[var(--border)]',
                   )}
                 >
                   {icon}

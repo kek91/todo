@@ -29,10 +29,10 @@ export function TaskList({ list, householdId }: TaskListProps) {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[#2E3245]">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
         <div className="flex items-center gap-2">
           <span className="text-xl">{list.icon || '📋'}</span>
-          <h2 className="font-semibold text-[#E8EAF0]">{list.name}</h2>
+          <h2 className="font-semibold text-[var(--text)]">{list.name}</h2>
           {activeTasks.length > 0 && (
             <span className="bg-[#7C6AF5]/20 text-[#7C6AF5] text-xs font-bold px-2 py-0.5 rounded-full">
               {activeTasks.length}
@@ -47,11 +47,11 @@ export function TaskList({ list, householdId }: TaskListProps) {
       {/* Task list */}
       <div className="flex-1 overflow-y-auto scrollbar-hide p-3 space-y-1">
         {isLoading ? (
-          <div className="flex items-center justify-center py-12 text-[#7B80A0]">Loading...</div>
+          <div className="flex items-center justify-center py-12 text-[var(--muted)]">Loading...</div>
         ) : activeTasks.length === 0 && completedTasks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 gap-2">
             <span className="text-3xl">✨</span>
-            <p className="text-[#7B80A0] text-sm">No tasks yet. Add one!</p>
+            <p className="text-[var(--muted)] text-sm">No tasks yet. Add one!</p>
           </div>
         ) : (
           <>
@@ -69,7 +69,7 @@ export function TaskList({ list, householdId }: TaskListProps) {
               <div>
                 <button
                   onClick={() => setShowCompleted(!showCompleted)}
-                  className="w-full flex items-center gap-2 px-2 py-2 text-xs text-[#7B80A0] hover:text-[#E8EAF0] transition-colors"
+                  className="w-full flex items-center gap-2 px-2 py-2 text-xs text-[var(--muted)] hover:text-[var(--text)] transition-colors"
                 >
                   <span>{showCompleted ? '▾' : '▸'}</span>
                   <span>Completed ({completedTasks.length})</span>

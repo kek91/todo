@@ -4,7 +4,7 @@ import type { ShoppingItem } from '../types'
 export async function getShoppingItems(listId: string): Promise<ShoppingItem[]> {
   return pb.collection('shopping_items').getFullList<ShoppingItem>({
     filter: `list = "${listId}"`,
-    sort: 'checked,category,sort_order,created',
+    sort: 'checked,category,created',
     expand: 'checked_by',
   })
 }

@@ -60,7 +60,7 @@ export function AddTask({ open, onClose, listId, householdId }: AddTaskProps) {
 
   const priorities: Priority[] = ['low', 'normal', 'high', 'urgent']
   const priorityColors: Record<Priority, string> = {
-    low: 'border-[#7B80A0] text-[#7B80A0]',
+    low: 'border-[#7B80A0] text-[var(--muted)]',
     normal: 'border-[#7C6AF5] text-[#7C6AF5]',
     high: 'border-[#F5A623] text-[#F5A623]',
     urgent: 'border-[#F55A5A] text-[#F55A5A]',
@@ -91,11 +91,11 @@ export function AddTask({ open, onClose, listId, householdId }: AddTaskProps) {
             onChange={(e) => setDueDate(e.target.value)}
           />
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm text-[#7B80A0] font-medium">Recurring</label>
+            <label className="text-sm text-[var(--muted)] font-medium">Recurring</label>
             <select
               value={recurring}
               onChange={(e) => setRecurring(e.target.value as RecurringType)}
-              className="bg-[#252837] border border-[#2E3245] rounded-xl px-4 py-3 text-[#E8EAF0] outline-none focus:border-[#7C6AF5] min-h-[48px]"
+              className="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl px-4 py-3 text-[var(--text)] outline-none focus:border-[#7C6AF5] min-h-[48px]"
             >
               <option value="none">None</option>
               <option value="daily">Daily</option>
@@ -116,7 +116,7 @@ export function AddTask({ open, onClose, listId, householdId }: AddTaskProps) {
         )}
 
         <div>
-          <p className="text-sm text-[#7B80A0] font-medium mb-2">Priority</p>
+          <p className="text-sm text-[var(--muted)] font-medium mb-2">Priority</p>
           <div className="flex gap-2">
             {priorities.map((p) => (
               <button
@@ -126,7 +126,7 @@ export function AddTask({ open, onClose, listId, householdId }: AddTaskProps) {
                 className={`flex-1 py-2 rounded-xl border text-xs font-semibold capitalize transition-all ${
                   priority === p
                     ? `${priorityColors[p]} bg-current/10`
-                    : 'border-[#2E3245] text-[#7B80A0]'
+                    : 'border-[var(--border)] text-[var(--muted)]'
                 }`}
               >
                 {p}
