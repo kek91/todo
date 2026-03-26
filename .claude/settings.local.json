@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Bash(npx create-vite@latest . --template react-ts --skip-git)",
+      "Bash(npx --yes create-vite . --template react-ts)",
+      "Bash(*)",
+      "Bash(npx create-vite@latest --help)",
+      "Bash(npx create-vite@latest /home/kek/repo/todo --template react-ts --no-interactive)",
+      "Bash(npx create-vite@latest /tmp/todo-app --template react-ts --no-interactive)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)"
+    ]
+  }
+}

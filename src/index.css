@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0F1117;
+  --color-surface: #1A1D27;
+  --color-surface-2: #252837;
+  --color-border: #2E3245;
+  --color-text: #E8EAF0;
+  --color-muted: #7B80A0;
+  --color-accent: #7C6AF5;
+  --color-accent-dim: #5A4DB8;
+  --color-success: #5EE8A8;
+  --color-warning: #F5A623;
+  --color-danger: #F55A5A;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #0F1117;
+  color: #E8EAF0;
+  font-family: system-ui, -apple-system, sans-serif;
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+@keyframes check-pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+.check-pop { animation: check-pop 0.2s ease; }
+
+@keyframes slide-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.slide-up { animation: slide-up 0.2s ease forwards; }
+
+@keyframes float-up {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-48px); opacity: 0; }
+}
+.float-up { animation: float-up 1.2s ease forwards; pointer-events: none; }
+
+@keyframes xp-expand {
+  from { width: var(--xp-from, 0%); }
+  to   { width: var(--xp-to, 0%); }
+}
+.xp-animate { animation: xp-expand 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124,106,245,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(124,106,245,0); }
+}
+.pulse-glow { animation: pulse-glow 1.5s ease infinite; }
